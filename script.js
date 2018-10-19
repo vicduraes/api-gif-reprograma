@@ -13,14 +13,14 @@ function erro(){
 function trazResultadoDaBusca(event){
   event.preventDefault ();
   const respostaDaBusca = new XMLHttpRequest(); //método conhecido como XHR//
-  respostaDaBusca.open("GET", `http://api.giphy.com/v1/gifs/search?q=${buscarGif}&api_key=NtBMIZ6eaD7Ll0LqKYVBRjLQviSh6Ezz`);
+  respostaDaBusca.open("GET", `http://api.giphy.com/v1/gifs/search?q=${buscaGif()}&api_key=NtBMIZ6eaD7Ll0LqKYVBRjLQviSh6Ezz`);
   respostaDaBusca.onload = carregaPostsComGifs;
   respostaDaBusca.onerror - erro;
   respostaDaBusca.send ();
 }
 
 function carregaPostsComGifs(){
-  listaGifs = JSON.parse(this.responseText);
+  listaGifs = JSON.parse(this.responseText)["data"];
   exibePosts();
 }
 
